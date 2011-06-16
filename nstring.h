@@ -83,7 +83,7 @@ int stringcompare(const string *string1,  const string *string2);
 // Function stringconcatenate
 // Implementation concatenates string2 at the end of string1 (wrapperfunction)
 // return: pointer on new string1
-string *stringconcatenate(const string *string1, const string *string2);
+string *stringconcatenate(string *string1, const string *string2);
 
 // Function stringcompare
 // Implementation of a function to compare 2 given strings

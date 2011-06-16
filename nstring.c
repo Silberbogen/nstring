@@ -87,7 +87,7 @@ string *stringadd(string *aimstring,  const char *newchars) {
 // Function stringconcatenate
 // Implementation concatenates string2 at the end of string1 (wrapperfunction)
 // return: pointer on new string1
-string *stringconcatenate(const string *string1, const string *string2) {
+string *stringconcatenate(string *string1, const string *string2) {
 	return(stringadd(string1, string2->string));
 }
 
