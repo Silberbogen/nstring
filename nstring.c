@@ -124,9 +124,9 @@ char *stringfindfirstchar(string *aimstring, const char *searchchars) {
 }
 
 // Function stringfindlastchar
-// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
-// Returns: pointer to first found char or NULL
-char *stringfindlastchar(string *aimstring, const char *searchchars) {
-	return(strrchr(aimstring->string, searchchars));
+// Implementation of a function, that returns the pointer to the last found char,  or NULL
+// Returns: pointer to last found char or NULL
+char *stringfindlastchar(string *aimstring, const int searchchar) {
+	return(strrchr(aimstring->string, searchchar));
 }
 

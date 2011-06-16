@@ -98,9 +98,9 @@ string *stringset(string *aimstring,  const char *newchars);
 char *stringfindfirstchar(string *aimstring, const char *searchchars);
 
 // Function stringfindlastchar
-// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
-// Returns: pointer to first found char or NULL
-char *stringfindlastchar(string *aimstring, const char *searchchars);
+// Implementation of a function, that returns the pointer the last found char,  or NULL
+// Returns: pointer to last found char or NULL
+char *stringfindlastchar(string *aimstring, const int searchchar);
 
 #endif
 
