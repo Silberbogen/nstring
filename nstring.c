@@ -84,3 +84,24 @@ string *stringadd(string *aimstring,  const char *newchars) {
 	return(aimstring);
 }
 
+// Function stringconcatenate
+// Implementation concatenates string2 at the end of string1 (wrapperfunction)
+// return: pointer on new string1
+string *stringconcatenate(const string *string1, const string *string2) {
+	return(stringadd(string1, string2->string));
+}
+
+// Function stringcompare
+// Implementation of a function to compare 2 given strings
+// return: negativ if string1 < string2,  zero if string1  == string2,  positive if string1 > string2
+int stringcompare(const string *string1, const string *string2) {
+	return(strcmp(string1->string, string2->string));
+}
+
+// Function stringcollate
+// Implementation of a function to compare 2 given strings by LC_COLLATE
+// return: negativ if string1 < string2,  zero if string1  == string2,  positive if string1 > string2
+int stringcollate(const string *string1, const string *string2) {
+	return(strcoll(string1->string, string2->string));
+}
+

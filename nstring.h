@@ -38,6 +38,9 @@
  *     added function stringnew()
  *     added function stringdelete()
  *     added function stringadd()
+ *     added function stringcompare()
+ *     added function stringconcatenate()
+ *	   added function stringcollate()
  *
  * =====================================================================================
  */
@@ -69,6 +72,28 @@ bool stringdelete(string *givenstring);
 // Implementation of a function,   that adds more chars to a existing string
 // Returns: pointer to the new string
 string *stringadd(string *aimstring,   const char *newchars);
+
+// Function stringcompare
+// Implementation of a function to compare 2 given strings
+// return: negative if string1 <  string2
+//         zero     if string1 == string2
+//         positive if string1 >  string2
+int stringcompare(const string *string1,  const string *string2);
+
+// Function stringconcatenate
+// Implementation concatenates string2 at the end of string1 (wrapperfunction)
+// return: pointer on new string1
+string *stringconcatenate(const string *string1, const string *string2);
+
+// Function stringcompare
+// Implementation of a function to compare 2 given strings
+// return: negativ if string1 < string2,  zero if string1  == string2,  positive if string1 > string2
+int stringcompare(const string *string1, const string *string2);
+
+// Function stringcollate
+// Implementation of a function to compare 2 given strings by LC_COLLATE
+// return: negativ if string1 < string2,  zero if string1  == string2,  positive if string1 > string2
+int stringcollate(const string *string1, const string *string2);
 
 #endif
 

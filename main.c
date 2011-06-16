@@ -48,5 +48,7 @@ int main(void) {
 	teststring = stringadd(teststring, " Und dann noch einer!");
 	printf("%s\n",  teststring->string);
 	printf("Länge: %d\n",  teststring->length);
+	string *teststring2 = stringnew("Der zweite Versuch!");
+	printf("Ergebnis des Vergleichs: %d\n", stringcompare(teststring,  teststring2));
 	printf("Rückgabewert: %s\n",  stringdelete(teststring) ? "Erfolg!" : "Misserfolg!");
 }
