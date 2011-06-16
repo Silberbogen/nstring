@@ -5,7 +5,7 @@
  *
  *    Description:  Only a testballoon for the nstring library
  *
- *        Version:  0.01
+ *        Version:  0.02
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -50,5 +50,8 @@ int main(void) {
 	printf("Länge: %d\n",  teststring->length);
 	string *teststring2 = stringnew("Der zweite Versuch!");
 	printf("Ergebnis des Vergleichs: %d\n", stringcompare(teststring,  teststring2));
+	teststring = stringadd(teststring, " Nochmal!");
+	printf("%s\n",  teststring->string);
+	printf("Länge: %d\n",  teststring->length);
 	printf("Rückgabewert: %s\n",  stringdelete(teststring) ? "Erfolg!" : "Misserfolg!");
 }
