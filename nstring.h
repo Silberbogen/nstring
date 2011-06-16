@@ -31,6 +31,15 @@
  *   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
  * =====================================================================================
+ *
+ *   last changes:  16.06.2011 Initial release
+ *   - 16.06.2011
+ *     added string structure
+ *     added function stringnew()
+ *     added function stringdelete()
+ *     added function stringadd()
+ *
+ * =====================================================================================
  */
 
 #ifndef _NSTRING_H_
@@ -56,6 +65,10 @@ string *stringnew(const char *oldstring);
 // Returns: true for full success - or false for partial or complete failure
 bool stringdelete(string *givenstring);
 
+// Function stringadd
+// Implementation of a function,   that adds more chars to a existing string
+// Returns: pointer to the new string
+string *stringadd(string *aimstring,   const char *newchars);
 
 #endif
 

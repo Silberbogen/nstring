@@ -66,3 +66,21 @@ bool stringdelete(string *givenstring) {
 	return true;
 }
 
+// Function stringadd
+// Implementation of a function,  that adds more chars to a existing string
+// Returns: pointer to the new string
+string *stringadd(string *aimstring,  const char *newchars) {
+	int length = strlen(newchars);
+	// Reallocates the memory
+	// If there isn't enough memory anymore, we get a NULL pointer
+	if(!realloc(aimstring->string,  aimstring->length  + length)) {
+		fputs("Error in function stringadd(string *,  const char *),  library nstring: reallocation of aimstring ended in a NULL-Pointer,  so no more memory could be allocated!\n",  stderr);
+		return(aimstring);
+	}
+	// Okay, we had enough space,  let's copy the new chars,  set another \0,  change the length and return
+	aimstring->string = strncat(aimstring->string, newchars, length);
+	aimstring->string[aimstring->length + length - 1] = '\0';
+	aimstring->length += length;
+	return(aimstring);
+}
+

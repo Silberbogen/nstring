@@ -18,6 +18,10 @@
  *
  * ====================================================================================
  *
+ *      Compiling:  clang -o nstring nstring.c main.c
+ *
+ * ====================================================================================
+ *
  *   Permission to use, copy, modify, and/or distribute this software for any
  *   purpose with or without fee is hereby granted, provided that the above
  *   copyright notice and this permission notice appear in all copies.
@@ -39,6 +43,9 @@
 
 int main(void) {
 	string *teststring = stringnew("Dies ist ein Versuch!");
+	printf("%s\n",  teststring->string);
+	printf("Länge: %d\n",  teststring->length);
+	teststring = stringadd(teststring, " Und dann noch einer!");
 	printf("%s\n",  teststring->string);
 	printf("Länge: %d\n",  teststring->length);
 	printf("Rückgabewert: %s\n",  stringdelete(teststring) ? "Erfolg!" : "Misserfolg!");
