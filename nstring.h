@@ -5,7 +5,7 @@
  *
  *    Description:  This header contains interface to the nstring library
  *
- *        Version:  0.03
+ *        Version:  0.04
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -41,6 +41,8 @@
  *     added function stringcompare()
  *	   added function stringcollate()
  *	   added function stringset()
+ *	   added function stringfindfirstchar()
+ *	   added function stringfindlastchar()
  *
  * =====================================================================================
  */
@@ -89,6 +91,16 @@ int stringcollate(const string *string1, const string *string2);
 // Implementation of a function, that set's a new set of chars to an existing string
 // Returns: pointer to the new string
 string *stringset(string *aimstring,  const char *newchars);
+
+// Function stringfindfirstchar
+// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
+// Returns: pointer to first found char or NULL
+char *stringfindfirstchar(string *aimstring, const char *searchchars);
+
+// Function stringfindlastchar
+// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
+// Returns: pointer to first found char or NULL
+char *stringfindlastchar(string *aimstring, const char *searchchars);
 
 #endif
 

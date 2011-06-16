@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains a string type for C
  *
- *        Version:  0.03
+ *        Version:  0.04
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -115,3 +115,18 @@ string *stringset(string *aimstring,  const char *newchars) {
 	aimstring->length = length + 1;
 	return(aimstring);
 }
+
+// Function stringfindfirstchar
+// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
+// Returns: pointer to first found char or NULL
+char *stringfindfirstchar(string *aimstring, const char *searchchars) {
+	return(strpbrk(aimstring->string, searchchars));
+}
+
+// Function stringfindlastchar
+// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
+// Returns: pointer to first found char or NULL
+char *stringfindlastchar(string *aimstring, const char *searchchars) {
+	return(strrchr(aimstring->string, searchchars));
+}
+
