@@ -53,5 +53,8 @@ int main(void) {
 	teststring = stringadd(teststring, " Nochmal!");
 	printf("%s\n",  teststring->string);
 	printf("Länge: %d\n",  teststring->length);
+	teststring = stringset(teststring, "Alles auf Anfang!");
+	printf("%s\n",  teststring->string);
+	printf("Länge: %d\n",  teststring->length);
 	printf("Rückgabewert: %s\n",  stringdelete(teststring) ? "Erfolg!" : "Misserfolg!");
 }

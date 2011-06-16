@@ -5,7 +5,7 @@
  *
  *    Description:  This header contains interface to the nstring library
  *
- *        Version:  0.02
+ *        Version:  0.03
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -40,6 +40,7 @@
  *     added function stringadd()
  *     added function stringcompare()
  *	   added function stringcollate()
+ *	   added function stringset()
  *
  * =====================================================================================
  */
@@ -83,6 +84,11 @@ int stringcompare(const string *string1,  const string *string2);
 // Implementation of a function to compare 2 given strings by LC_COLLATE
 // return: negativ if string1 < string2,  zero if string1  == string2,  positive if string1 > string2
 int stringcollate(const string *string1, const string *string2);
+
+// Function stringset
+// Implementation of a function, that set's a new set of chars to an existing string
+// Returns: pointer to the new string
+string *stringset(string *aimstring,  const char *newchars);
 
 #endif
 

@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains a string type for C
  *
- *        Version:  0.02
+ *        Version:  0.03
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -98,3 +98,20 @@ int stringcollate(const string *string1, const string *string2) {
 	return(strcoll(string1->string, string2->string));
 }
 
+// Function stringset
+// Implementation of a function,  that set's a new set of chars to an existing string
+// Returns: pointer to the new string
+string *stringset(string *aimstring,  const char *newchars) {
+	int length = strlen(newchars);
+	// Reallocates the memory
+	// If there isn't enough memory anymore, we get a NULL pointer
+	if(!realloc(aimstring->string,  length + 1)) {
+		fputs("Error in function stringset(string *,  const char *),  library nstring: reallocation of aimstring ended in a NULL-Pointer,  so no more memory could be allocated!\n",  stderr);
+		return(aimstring);
+	}
+	// Okay, we had enough space,  let's copy the new chars,  set another \0,  change the length and return
+	aimstring->string = strncpy(aimstring->string, newchars, length);
+	aimstring->string[length] = '\0';
+	aimstring->length = length + 1;
+	return(aimstring);
+}
