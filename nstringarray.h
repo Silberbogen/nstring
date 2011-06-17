@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.c
+ *       Filename:  nstringarray.c
  *
- *    Description:  Only a testballoon for the nstring library
+ *    Description:  This library contains an array for nstrings for C
  *
- *        Version:  0.03
- *        Created:  16.06.2011 14:15:18
+ *        Version:  0.01
+ *        Created:  17.06.2011 12:34:00
  *       Revision:  none
  *       Compiler:  clang
  *
@@ -18,13 +18,9 @@
  *
  * ====================================================================================
  *
- *      Compiling:  clang -o nstring nstringarray.c nstring.c main.c
- *
- * ====================================================================================
- *
  *   Last changes:
  *   - 17.06.2011
- *   -- implemented a first test for stringarray
+ *   -- added function stringarraynew()
  *
  * ====================================================================================
  *
@@ -42,32 +38,26 @@
  *
  * =====================================================================================
  */
+
+#ifndef _NSTRINGARRAY_H_
+#define _NSTRINGARRAY_H_
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 #include "nstring.h"
-#include "nstringarray.h"
 
-int main(void) {
-	string *teststring = stringnew("Dies ist ein Versuch!");
-	printf("%s\n",  teststring->string);
-	printf("Länge: %d\n",  teststring->length);
-	teststring = stringadd(teststring, " Und dann noch einer!");
-	printf("%s\n",  teststring->string);
-	printf("Länge: %d\n",  teststring->length);
-	string *teststring2 = stringnew("Der zweite Versuch!");
-	printf("Ergebnis des Vergleichs: %d\n", stringcompare(teststring,  teststring2));
-	teststring = stringadd(teststring, " Nochmal!");
-	printf("%s\n",  teststring->string);
-	printf("Länge: %d\n",  teststring->length);
-	teststring = stringset(teststring, "Alles auf Anfang!");
-	printf("%s\n",  teststring->string);
-	printf("Länge: %d\n",  teststring->length);
-	stringdelete(teststring2);
-	printf("Rückgabewert: %s\n",  stringdelete(teststring) ? "Erfolg!" : "Misserfolg!");
+typedef struct _stringarray {
+//	string *element[];
+//	string element[];
+	string **element;
+	unsigned int actualelements;
+} stringarray;
 
-	stringarray *teststringarray = stringarraynew(3);
-	stringset(teststringarray->element[1], "Dies ist der neue Inhalt!");
-	for(int i=0;  i < 3;  ++i)
-		printf("%d. %s\n", i+1,  teststringarray->element[i]->string);
-}
+// Function stringarraynew
+// Implementation: This function creates an array of <number> strings
+// returns: pointer on the stringarraystructure
+stringarray *stringarraynew(const unsigned int number);
+
+#endif
