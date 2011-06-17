@@ -5,7 +5,7 @@
  *
  *    Description:  Only a testballoon for the nstring library
  *
- *        Version:  0.03
+ *        Version:  0.04
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -24,7 +24,8 @@
  *
  *   Last changes:
  *   - 17.06.2011
- *   -- implemented a first test for stringarray
+ *   -- implemented a first test for stringarraynew
+ *   -- implemented a test for stringarraydelete
  *
  * ====================================================================================
  *
@@ -70,4 +71,5 @@ int main(void) {
 	stringset(teststringarray->element[1], "Dies ist der neue Inhalt!");
 	for(int i=0;  i < 3;  ++i)
 		printf("%d. %s\n", i+1,  teststringarray->element[i]->string);
+	printf("Rückgabewert: %s\n",  stringarraydelete(teststringarray) ? "Erfolg!" : "Misserfolg!");
 }

@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains an array for nstrings for C
  *
- *        Version:  0.01
+ *        Version:  0.02
  *        Created:  17.06.2011 12:34:00
  *       Revision:  none
  *       Compiler:  clang
@@ -21,6 +21,7 @@
  *   Last changes:
  *   - 17.06.2011
  *   -- added function stringarraynew()
+ *   -- added function stringarraydelete()
  *
  * ====================================================================================
  *
@@ -59,5 +60,10 @@ typedef struct _stringarray {
 // Implementation: This function creates an array of <number> strings
 // returns: pointer on the stringarraystructure
 stringarray *stringarraynew(const unsigned int number);
+
+// Function stringarraydelete
+// Implementation: This function deletes a complete stringarray
+// returns: true if all went well and false if something went wrong
+bool stringarraydelete(stringarray *givenstringarray);
 
 #endif

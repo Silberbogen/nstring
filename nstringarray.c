@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains an array for nstrings for C
  *
- *        Version:  0.01
+ *        Version:  0.02
  *        Created:  17.06.2011 12:34:00
  *       Revision:  none
  *       Compiler:  clang
@@ -39,7 +39,7 @@
 #include "nstring.h"
 #include "nstringarray.h"
 
-// Function stringarraycreate
+// Function stringarraynew
 // Implementation: This function creates an array of strings
 // returns: pointer on the stringarraystructure
 stringarray *stringarraynew(const unsigned int number) {
@@ -66,3 +66,21 @@ stringarray *stringarraynew(const unsigned int number) {
 	// All done!
 	return(returnstringarray);
 }
+
+// Function stringarraydelete
+// Implementation: This function deletes a complete stringarray
+// returns: true if all went well and false something went wrong.
+bool stringarraydelete(stringarray *givenstringarray) {
+	bool allwell = true;
+	if(!givenstringarray) // The givenstringarray is a NULL-Pointer ... busted!
+		return false;
+	// freeing all the substrings
+	for(unsigned int i=0;  i < givenstringarray->actualelements;  ++i)
+		if(!stringdelete(givenstringarray->element[i]))
+				allwell = false;
+	// and last freeing the givenstringarray itself
+	free(givenstringarray);
+	// done - now return if there have been any problems
+	return(allwell);
+}
+
