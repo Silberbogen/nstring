@@ -5,3 +5,73 @@ Have fun,
 
 	 Sascha Biermanns
 
+
+// Implementation of nstring
+
+typedef struct _string {
+	char *string; // the pointer on text
+	int length;  // the length of the text
+} string;
+
+// Function: stringnew
+// Implementation: This function creates the memorylocation for a new string - and adds an \0 to the string
+// Returns: pointer on the string structure
+string *stringnew(const char *oldstring);
+
+// Function stringdelete
+// Implementation free the memory from the string construction
+// Returns: true for full success - or false for partial or complete failure
+bool stringdelete(string *givenstring);
+
+// Function stringadd
+// Implementation of a function,   that adds more chars to a existing string
+// Returns: pointer to the new string
+string *stringadd(string *aimstring,   const char *newchars);
+
+// Function stringcompare
+// Implementation of a function to compare 2 given strings
+// return: negative if string1 <  string2
+//         zero     if string1 == string2
+//         positive if string1 >  string2
+int stringcompare(const string *string1,  const string *string2);
+
+// Function stringcollate
+// Implementation of a function to compare 2 given strings by LC_COLLATE
+// return: negativ if string1 < string2,  zero if string1  == string2,  positive if string1 > string2
+int stringcollate(const string *string1, const string *string2);
+
+// Function stringset
+// Implementation of a function, that set's a new set of chars to an existing string
+// Returns: pointer to the new string
+string *stringset(string *aimstring,  const char *newchars);
+
+// Function stringfindfirstchar
+// Implementation of a function, that returns the pointer the first found char of a list,  or NULL
+// Returns: pointer to first found char or NULL
+char *stringfindfirstchar(string *aimstring, const char *searchchars);
+
+// Function stringfindlastchar
+// Implementation of a function, that returns the pointer the last found char,  or NULL
+// Returns: pointer to last found char or NULL
+char *stringfindlastchar(string *aimstring, const int searchchar);
+
+
+// Implementation of nstringarray
+
+typedef struct _stringarray {
+//	string *element[];
+//	string element[];
+	string **element;
+	unsigned int actualelements;
+} stringarray;
+
+// Function stringarraynew
+// Implementation: This function creates an array of <number> strings
+// returns: pointer on the stringarraystructure
+stringarray *stringarraynew(const unsigned int number);
+
+// Function stringarraydelete
+// Implementation: This function deletes a complete stringarray
+// returns: true if all went well and false if something went wrong
+bool stringarraydelete(stringarray *givenstringarray);
+
