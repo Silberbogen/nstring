@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains an array for nstrings for C
  *
- *        Version:  0.03
+ *        Version:  0.04
  *        Created:  17.06.2011 12:34:00
  *       Revision:  none
  *       Compiler:  clang
@@ -83,4 +83,38 @@ bool stringarraydelete(stringarray *givenstringarray) {
 	// done - now return if there have been any problems
 	return(allwell);
 }
+
+// Function stringarrayadd
+// Implementation: This function adds some strings to a given stringarray
+// returns: pointer on the stringarraystructure or NULL-Pointer(busted)
+stringarray *stringarrayadd(stringarray *givenstringarray,  const unsigned int number) {
+	string **safetyptr; // for realloc
+
+	printf("Bin in stringarrayadd.\n");
+	// is the boundary of unsigned int crossed?
+	if((givenstringarray->actualelements + number) < (givenstringarray->actualelements || number)) {
+		fputs("Error: number of elements bigger then unsigend int in function stringarrayadd,  library nstringarray.c\n",  stdout);
+		return(givenstringarray);
+	}
+	// reallocating memory
+	safetyptr = realloc(givenstringarray->element, givenstringarray->actualelements * sizeof(string));
+	if(!safetyptr) {
+		fputs("Error: safetyptr is a NULL-pointer in function stringarrayadd,  library nstringarray.c\n",  stderr);
+		return(givenstringarray);
+	}
+	givenstringarray->element = safetyptr;
+	// Now initialise all the stringelements
+	for(unsigned int i = givenstringarray->actualelements;  i < (givenstringarray->actualelements + number);  ++i) {
+		givenstringarray->element[i] = stringnew("");
+		if(!givenstringarray->element[i]) {
+			fprintf(stderr, "Error: givenstringarray->element[%d] couldn't be created in function stringarrayadd,  library nstringarray.c\n", i);
+			return(givenstringarray);
+		}
+	}
+	// Ah,  all went well! Adding the new strings
+	givenstringarray->actualelements += number;
+	// All done!
+	return(givenstringarray);
+}
+
 

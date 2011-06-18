@@ -75,3 +75,8 @@ stringarray *stringarraynew(const unsigned int number);
 // returns: true if all went well and false if something went wrong
 bool stringarraydelete(stringarray *givenstringarray);
 
+// Function stringarrayadd
+// Implementation: This function adds some strings to a given stringarray
+// returns: pointer on the stringarraystructure or NULL-Pointer(busted)
+stringarray *stringarrayadd(stringarray *givenstringarray,  const unsigned int number);
+
