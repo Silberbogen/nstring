@@ -5,7 +5,7 @@
  *
  *    Description:  Only a testballoon for the nstring library
  *
- *        Version:  0.05
+ *        Version:  0.07
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -26,8 +26,11 @@
  *   - 17.06.2011
  *   -- implemented a first test for stringarraynew
  *   -- implemented a test for stringarraydelete
+ *   - 18.06.2011
  *   -- could remove 2 bugs in nstring.c,  function stringadd() and stringset() -
  *      my thanks go to Wolfgang Wallner (icefire) for helping me
+ *   -- Testing the stringarrayadd() function
+ *   -- Testing the stringarrayremove() function
  *
  * ====================================================================================
  *
@@ -80,6 +83,15 @@ int main(void) {
 	stringset(teststringarray2->element[6], "Element[6] geändert (also das 7.)");
 	stringset(teststringarray2->element[0], "Und noch Element[0] (also das 1.)");
 	for(int i=0;  i < teststringarray2->actualelements;  ++i)
+		printf("%d. %s\n", i+1,  teststringarray2->element[i]->string);
+	teststringarray2 = stringarrayadd(teststringarray2,  3);
+	stringset(teststringarray2->element[14], "Und noch Element[14] (also das 15.)");
+	stringset(teststringarray2->element[2], "Dann noch das Element[2] (das 3.)");
+	for(int i=0;  i < teststringarray2->actualelements;  ++i)
+		printf("%d. %s\n", i+1,  teststringarray2->element[i]->string);
+	teststringarray2 = stringarrayadd(teststringarray2,  2);
+	stringarrayremove(teststringarray2, 6);
+		for(int i=0;  i < teststringarray2->actualelements;  ++i)
 		printf("%d. %s\n", i+1,  teststringarray2->element[i]->string);
 	printf("Rückgabewert: %s\n",  stringarraydelete(teststringarray2) ? "Erfolg!" : "Misserfolg!");
 }

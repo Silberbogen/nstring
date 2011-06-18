@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains an array for nstrings for C
  *
- *        Version:  0.04
+ *        Version:  0.05
  *        Created:  17.06.2011 12:34:00
  *       Revision:  none
  *       Compiler:  clang
@@ -117,4 +117,23 @@ stringarray *stringarrayadd(stringarray *givenstringarray,  const unsigned int n
 	return(givenstringarray);
 }
 
+// Function stringarrayremove
+// Implementation: This function removes a string from a given stringarray
+// returns: bool true if all is okay or false if an error occured
+bool stringarrayremove(stringarray *givenstringarray,  const unsigned int number) {
+	string *safetyptr;
 
+	if(number > givenstringarray->actualelements) {
+			fprintf(stderr, "Error: number to remove from givenstringarray was outside the stringarrays range in function strinarrayremove,  library nstringarray.c\n");
+			return(false);
+	}
+	safetyptr = givenstringarray->element[number];
+	for(int i=number;   i < (givenstringarray->actualelements - 1); ++i)
+		givenstringarray->element[i] = givenstringarray->element[i+1];
+	if(!stringdelete(safetyptr)) {
+			fprintf(stderr, "Error: Couldn't remove string from safetypt in function strinarrayremove,  library nstringarray.c\n");
+			return(false);
+	}
+	givenstringarray->actualelements -= 1;
+	return(true);
+}

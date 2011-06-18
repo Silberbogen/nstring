@@ -80,3 +80,8 @@ bool stringarraydelete(stringarray *givenstringarray);
 // returns: pointer on the stringarraystructure or NULL-Pointer(busted)
 stringarray *stringarrayadd(stringarray *givenstringarray,  const unsigned int number);
 
+// Function stringarrayremove
+// Implementation: This function removes a string from a given stringarray
+// returns: bool true if all is okay or false if an error occured
+bool stringarrayremove(stringarray *givenstringarray,  const unsigned int number);
+
