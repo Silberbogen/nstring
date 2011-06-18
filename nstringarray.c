@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains an array for nstrings for C
  *
- *        Version:  0.02
+ *        Version:  0.03
  *        Created:  17.06.2011 12:34:00
  *       Revision:  none
  *       Compiler:  clang

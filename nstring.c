@@ -5,7 +5,7 @@
  *
  *    Description:  This library contains a string type for C
  *
- *        Version:  0.04
+ *        Version:  0.05
  *        Created:  16.06.2011 14:15:18
  *       Revision:  none
  *       Compiler:  clang
@@ -15,6 +15,12 @@
  *        License:  ISC
  *
  *   Copyright (C)  2011, Sascha K. Biermanns
+ *
+ * ====================================================================================
+ *   Last changes:
+ *   - 18.6.2011
+ *   -- 2 pointer bugs,  resulting in the safetypointer in stringadd and stringset
+ *      could have been done,  thanks to Wolfgang Wallner (icefire)
  *
  * ====================================================================================
  *
@@ -71,13 +77,16 @@ bool stringdelete(string *givenstring) {
 // Returns: pointer to the new string
 string *stringadd(string *aimstring,  const char *newchars) {
 	int length = strlen(newchars);
+	char *safetyptr;
 	// Reallocates the memory
 	// If there isn't enough memory anymore, we get a NULL pointer
-	if(!realloc(aimstring->string,  aimstring->length  + length)) {
+	safetyptr = realloc(aimstring->string, aimstring->length + length);
+	if(!safetyptr) {
 		fputs("Error in function stringadd(string *,  const char *),  library nstring: reallocation of aimstring ended in a NULL-Pointer,  so no more memory could be allocated!\n",  stderr);
 		return(aimstring);
 	}
 	// Okay, we had enough space,  let's copy the new chars,  set another \0,  change the length and return
+	aimstring->string = safetyptr;
 	aimstring->string = strncat(aimstring->string, newchars, length);
 	aimstring->string[aimstring->length + length - 1] = '\0';
 	aimstring->length += length;
@@ -103,13 +112,16 @@ int stringcollate(const string *string1, const string *string2) {
 // Returns: pointer to the new string
 string *stringset(string *aimstring,  const char *newchars) {
 	int length = strlen(newchars);
+	char *safetyptr;
 	// Reallocates the memory
 	// If there isn't enough memory anymore, we get a NULL pointer
-	if(!realloc(aimstring->string,  length + 1)) {
+	safetyptr = realloc(aimstring->string,  length + 1);
+	if(!safetyptr) {
 		fputs("Error in function stringset(string *,  const char *),  library nstring: reallocation of aimstring ended in a NULL-Pointer,  so no more memory could be allocated!\n",  stderr);
 		return(aimstring);
 	}
 	// Okay, we had enough space,  let's copy the new chars,  set another \0,  change the length and return
+	aimstring->string = safetyptr;
 	aimstring->string = strncpy(aimstring->string, newchars, length);
 	aimstring->string[length] = '\0';
 	aimstring->length = length + 1;
