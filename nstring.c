@@ -21,6 +21,8 @@
  *   - 18.6.2011
  *   -- 2 pointer bugs,  resulting in the safetypointer in stringadd and stringset
  *      could have been done,  thanks to Wolfgang Wallner (icefire)
+ *   - 22.06.2011
+ *   -- Add errorhandling in stringnew function as example (silviof)
  *
  * ====================================================================================
  *
@@ -46,19 +48,19 @@
 
 // Function: stringnew
 // Implementation: This function creates the memorylocation for a new string - and adds an \0 to the string
-// Returns: pointer on the string structure
-string *stringnew(const char *oldstring) {
-	string *returnstring = malloc(sizeof(string));
+// Returns: errorcode
+nerror stringnew(const char *oldstring, string **returnstring) {
+	*returnstring = (string *)malloc(sizeof(string));
 	if(!returnstring) {
 		/* malloc goes wrong ... */
-		return NULL;
+		return ERROR_MEMORY;
 	}
-	returnstring->length = strlen(oldstring) + 1;
-	char *newstring = malloc(returnstring->length * sizeof(char));
-	newstring = strncpy(newstring, oldstring,  returnstring->length - 1);  // last char is for an additional \0
-	newstring[returnstring->length - 1] = '\0';
-	returnstring->string = newstring;
-	return(returnstring);
+	(*returnstring)->length = strlen(oldstring) + 1;
+	char *newstring = malloc((*returnstring)->length * sizeof(char));
+	newstring = strncpy(newstring, oldstring,  (*returnstring)->length - 1);  // last char is for an additional \0
+	newstring[(*returnstring)->length - 1] = '\0';
+	(*returnstring)->string = newstring;
+	return(ERROR_NONE);
 }
 
 // Function stringdelete

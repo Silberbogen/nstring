@@ -55,6 +55,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "nerror.h"
+
 typedef struct _string {
 	char *string; // the pointer on text
 	int length;  // the length of the text
@@ -62,8 +64,8 @@ typedef struct _string {
 
 // Function: stringnew
 // Implementation: This function creates the memorylocation for a new string - and adds an \0 to the string
-// Returns: pointer on the string structure
-string *stringnew(const char *oldstring);
+// Returns: errorcode
+nerror stringnew(const char *oldstring, string **returnstring);
 
 // Function stringdelete
 // Implementation free the memory from the string construction

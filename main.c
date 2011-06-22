@@ -55,8 +55,9 @@
 #include "nstringarray.h"
 
 int main(void) {
-	string *teststring = stringnew("Dies ist ein Versuch!");
-	if(!teststring) {
+	string *teststring = NULL;
+	if(stringnew("Dies ist ein Versuch!", &teststring) != ERROR_NONE) {
+		/* check error code and print failure */
 		fprintf(stderr, "Failure in creation of string object\n");
 	}
 	printf("%s\n",  teststring->string);
@@ -64,7 +65,11 @@ int main(void) {
 	teststring = stringadd(teststring, " Und dann noch einer!");
 	printf("%s\n",  teststring->string);
 	printf("Länge: %d\n",  teststring->length);
-	string *teststring2 = stringnew("Der zweite Versuch!");
+	string *teststring2 = NULL;
+	if(stringnew("Der zweite Versuch!", &teststring2) != ERROR_NONE) {
+		/* check error code and print failure */
+		fprintf(stderr, "Failure in creation of string object\n");
+	}
 	printf("Ergebnis des Vergleichs: %d\n", stringcompare(teststring,  teststring2));
 	teststring = stringadd(teststring, " Nochmal!");
 	printf("%s\n",  teststring->string);
