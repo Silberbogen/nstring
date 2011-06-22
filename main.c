@@ -56,6 +56,9 @@
 
 int main(void) {
 	string *teststring = stringnew("Dies ist ein Versuch!");
+	if(!teststring) {
+		fprintf(stderr, "Failure in creation of string object\n");
+	}
 	printf("%s\n",  teststring->string);
 	printf("Länge: %d\n",  teststring->length);
 	teststring = stringadd(teststring, " Und dann noch einer!");

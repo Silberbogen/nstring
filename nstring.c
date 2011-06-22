@@ -49,6 +49,10 @@
 // Returns: pointer on the string structure
 string *stringnew(const char *oldstring) {
 	string *returnstring = malloc(sizeof(string));
+	if(!returnstring) {
+		/* malloc goes wrong ... */
+		return NULL;
+	}
 	returnstring->length = strlen(oldstring) + 1;
 	char *newstring = malloc(returnstring->length * sizeof(char));
 	newstring = strncpy(newstring, oldstring,  returnstring->length - 1);  // last char is for an additional \0
