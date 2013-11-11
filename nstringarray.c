@@ -57,8 +57,7 @@ stringarray *stringarraynew(const unsigned int number) {
 	returnstringarray->actualelements = number;
 	// Now initialise all the stringelements
 	for(unsigned int i = 0;  i < number;  ++i) {
-		returnstringarray->element[i] = stringnew("");
-		if(!returnstringarray->element[i]) {
+		if(stringnew("", &returnstringarray->element[i]) != ERROR_NONE) {
 			fprintf(stderr, "Error: returnstringarray->element[%d] couldn't be created in function stringarraycreate,  library nstringarray.c\n", i);
 			return(returnstringarray);
 		}
@@ -105,8 +104,7 @@ stringarray *stringarrayadd(stringarray *givenstringarray,  const unsigned int n
 	givenstringarray->element = safetyptr;
 	// Now initialise all the stringelements
 	for(unsigned int i = givenstringarray->actualelements;  i < (givenstringarray->actualelements + number);  ++i) {
-		givenstringarray->element[i] = stringnew("");
-		if(!givenstringarray->element[i]) {
+		if(stringnew("", &givenstringarray->element[i]) != ERROR_NONE) {
 			fprintf(stderr, "Error: givenstringarray->element[%d] couldn't be created in function stringarrayadd,  library nstringarray.c\n", i);
 			return(givenstringarray);
 		}
