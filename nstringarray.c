@@ -50,7 +50,7 @@ stringarray *stringarraynew(const unsigned int number) {
 	}
 	// That was the arraystructure - now to the array of elements
 	returnstringarray->element = malloc(sizeof(string) * number);
-	if(!returnstringarray) {
+	if(!returnstringarray->element) {
 		fputs("Error: returnstringarray->element[] couldn't be created in function stringarraycreate,  library nstringarray.c\n",  stderr);
 		return(returnstringarray);
 	}
